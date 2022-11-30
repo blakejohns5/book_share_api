@@ -1,11 +1,14 @@
-import { getAllUsers, getUserByEmail, createUser } from "./userResolvers.js";
-import { getAllBooks } from "./bookResolvers.js";
+import { getAllUsers, getSingleUser, createUser } from "./userResolvers.js";
+import { createBook, getAllBooks, getSingleBook } from "./bookResolvers.js";
 
 
 export {
   getAllUsers,
-  getUserByEmail,
-  createUser,
+  getSingleUser,
+  createUser, 
+  
+  createBook,
   getAllBooks,
+  getSingleBook,
   
 }

@@ -1,14 +1,14 @@
 
-import { GraphQLObjectType, GraphQLString, GraphQLInputObjectType, GraphQLList, GraphQLBoolean } from "graphql"
+import { GraphQLObjectType, GraphQLString, GraphQLInputObjectType, GraphQLNonNull, GraphQLList, GraphQLBoolean } from "graphql"
 
-// User Type
-const UserInput = new GraphQLInputObjectType({
+
+// User Input Type
+const UserInputType = new GraphQLInputObjectType({
   name: 'UserInput',
   fields: () => ({
-    username: { type: GraphQLString },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    password: { type: GraphQLString },
+    username: { type: new GraphQLNonNull(GraphQLString) },
+    email: { type: new GraphQLNonNull(GraphQLString) },
+    password: { type: new GraphQLNonNull(GraphQLString) },
   })
 })
 
@@ -23,14 +23,15 @@ const UserType = new GraphQLObjectType({
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     password: { type: GraphQLString },
-    booksShared: { type: GraphQLList },
-    booksBorrowed: { type: GraphQLList },
-    active: { type: GraphQLBoolean }
+    // booksShared: { type: GraphQLList },
+    // booksBorrowed: { type: GraphQLList },
+    // active: { type: GraphQLBoolean }
 
   })
 })
 
 
 export {
+  UserInputType,
   UserType
 }

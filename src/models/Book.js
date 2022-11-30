@@ -16,27 +16,27 @@ const BookSchema = new mongoose.Schema({
   binding: {
     type: String,
   },
-  sharedBy: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-    }
-  ],
-  borrowedBy: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-    }
-  ],
-  currentlyBorrowedBy: {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users"
-    },
-    dueDate: {
-      type: Date,
-    }
-  }
+  // // sharedBy: [
+  // //   {
+  // //     type: mongoose.Schema.Types.ObjectId,
+  // //     ref: "users",
+  // //   }
+  // // ],
+  // // borrowedBy: [
+  // //   {
+  // //     type: mongoose.Schema.Types.ObjectId,
+  // //     ref: "users",
+  // //   }
+  // // ],
+  // // currentlyBorrowedBy: {
+  // //   user: {
+  // //     type: mongoose.Schema.Types.ObjectId,
+  // //     ref: "users"
+  // //   },
+  // //   dueDate: {
+  // //     type: Date,
+  // //   }
+  // // }
 }, 
 { timestamps: true },
 );

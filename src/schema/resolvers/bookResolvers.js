@@ -2,14 +2,29 @@ import { Book } from "../../models/index.js";
 
 
 
+const getSingleBook = async (parent, args) => {
+  try {
+    const { _id, title, author } = args;
+    const book = await User.findOne({ title })
+    return book;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+    
+}
+
+
 const getAllBooks = async (parent, args) => {      
       const books = await Book.find({})
       return books;
 }
 
 const createBook = async (parent, args) => {
-  const newBook = await Book.create({ title: args.title, author: args.author, sharedBy: args.sharedBy });
+  const { title, author } = args.data;
+  const newBook = await Book.create({ title, author });
   newBook.save();
+  // const createdBook = await Book.find({ title: args.title })
   return newBook;
 }
 
@@ -26,5 +41,7 @@ const updatedBook = async (parent, args) => {
 
 
 export {
+  createBook,
+  getSingleBook,
   getAllBooks,
 }

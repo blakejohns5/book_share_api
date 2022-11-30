@@ -2,7 +2,7 @@ import { User } from "../../models/index.js";
 
 
 
-const getUserByEmail = async (parent, args) => {
+const getSingleUser = async (parent, args) => {
   try {
     const { email } = args;
     const user = await User.findOne({ email })
@@ -26,19 +26,16 @@ const getAllUsers = async (parent, args) => {
 }
 
 const createUser = async (parent, args) => {
+  console.log(args)
   try {
     const newUser = await User.create({ 
       username: args.username, 
-      name: args.name, 
       email: args.email, 
       password: args.password 
-      
     });
-    return newUser.save()
-      .then(result => { 
-        console.log(result);
-        return { ...result._doc };
-    })
+    newUser.save();
+    return newUser;
+    
   } catch (err) {
     console.log(err);
     throw err;
@@ -46,13 +43,11 @@ const createUser = async (parent, args) => {
 }
 
 
-const updateUser = async (parent, args) => {
-  const updatedUser = await User.find
-}
+
 
 
 export {
-  getUserByEmail,
+  getSingleUser,
   getAllUsers,
   createUser,
 }

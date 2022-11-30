@@ -1,11 +1,11 @@
-import { GraphQLInputObjectType, GraphQLList, GraphQLObjectType, GraphQLString } from "graphql"
+import { GraphQLInputObjectType, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql"
 
 // Book Input Type
-const BookInput = new GraphQLInputObjectType({
+const BookInputType = new GraphQLInputObjectType({
   name: "BookInput",
   fields: () => ({
-    title: { type: GraphQLString },
-    author: { type: GraphQLString },
+    title: { type: new GraphQLNonNull(GraphQLString) },
+    author: { type: new GraphQLNonNull(GraphQLString) },
   })
 })
 
@@ -17,14 +17,15 @@ const BookType = new GraphQLObjectType({
     author: { type: GraphQLString },
     genre: { type: GraphQLString },
     binding: { type: GraphQLString },
-    sharedBy: { type: GraphQLList },
-    borrowedBy: { type: GraphQLList },
-    currentlyBorrowedBy: { type: GraphQLObjectType }
+    // sharedBy: { type: GraphQLList },
+    // borrowedBy: { type: GraphQLList },
+    // currentlyBorrowedBy: { type: GraphQLObjectType }
   })
 })
 
 
 
 export {
-  BookType
+  BookType,
+  BookInputType,
 }

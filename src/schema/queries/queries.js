@@ -1,5 +1,5 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString, GraphQLInt  } from 'graphql';
-import { getAllBooks, getAllUsers, getUserByEmail } from '../resolvers/index.js';
+import { getAllBooks, getAllUsers, getSingleUser, getSingleBook } from '../resolvers/index.js';
 import { UserType, BookType } from '../types/index.js';
 
 // Root Query
@@ -11,11 +11,20 @@ const RootQueryType = new GraphQLObjectType({
       args: {
         email: { type: GraphQLString },
       },
-      resolve: getUserByEmail,
+      resolve: getSingleUser,
     },
     users: {
       type: new GraphQLList(UserType),
       resolve: getAllUsers,
+    },
+    book: {
+      type: BookType,
+      args: {
+        _id: { type: GraphQLString },
+        title: { type: GraphQLString },
+        author: { type: GraphQLString },
+      },
+      resolve: getSingleBook,
     },
     books: {
       type: new GraphQLList(BookType),

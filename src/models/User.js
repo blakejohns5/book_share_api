@@ -23,23 +23,24 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
   },
-  booksShared: [
-    {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "books"
-    },
-  ],
-  booksBorrowed: [
-    {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "books"
-    },
-  ],
-  active: {
-    type: Boolean,
-    default: false,
-  }
 },
+//   booksShared: [
+//     {
+//     type: mongoose.Schema.Types.ObjectId5t3,
+//     ref: "books"
+//     },
+//   ],
+//   booksBorrowed: [
+//     {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "books"
+//     },
+//   ],
+//   active: {
+//     type: Boolean,
+//     default: false,
+//   }
+// },
 { timestamps: true },
 );
 
